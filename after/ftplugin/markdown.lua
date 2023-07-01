@@ -53,13 +53,12 @@ vim.keymap.set('n', 'gd', go_to_obsidian_link, { noremap = true })
 local insert_obsidian_link = function()
     local enter = function(prompt_bufnr)
         local selected = action_state.get_selected_entry()[1]
-        -- TODO: doesn't account for multiple files with that name
-        -- That's a much harder problem, so I've left it for the moment
         local extracted = selected:gsub("[^/]*/", ""):gsub("%.md", "")
         local link = "[[".. extracted .. "]]"
         actions.close(prompt_bufnr)
         vim.api.nvim_put({ link }, "c", false, true)
-        vim.cmd("normal a")
+        vim.cmd("normal i")
+        vim.cmd([[call cursor( line('.'), col('.') + 1)]])
     end
     pickers.new(themes.get_cursor(), {
         prompt_title = "Select the file to insert a link to.",
