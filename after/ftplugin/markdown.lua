@@ -58,7 +58,7 @@ local insert_obsidian_link = function()
         actions.close(prompt_bufnr)
         vim.api.nvim_put({ link }, "c", false, true)
         vim.cmd("normal i")
-        vim.cmd([[call cursor( line('.'), col('.') + 1)]])
+        vim.cmd([[call cursor(line('.'), col('.') + 1)]])
     end
     pickers.new(themes.get_cursor(), {
         prompt_title = "Select the file to insert a link to.",
