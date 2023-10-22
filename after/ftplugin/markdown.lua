@@ -6,8 +6,6 @@ local obsidian = vim.fs.find('.obsidian/', {
 
 if next(obsidian) == nil then
     return
-else
-    print('obsidian vault found!')
 end
 
 local obsidian_link_text = function()
