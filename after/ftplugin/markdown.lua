@@ -1,3 +1,15 @@
+local obsidian = vim.fs.find('.obsidian/', {
+    upward = true,
+    type = 'directory',
+    path = vim.fs.dirname(vim.api.nvim_buf_get_name(0)),
+})
+
+if next(obsidian) == nil then
+    return
+else
+    print('obsidian vault found!')
+end
+
 local obsidian_link_text = function()
     local cursor = vim.api.nvim_win_get_cursor(0)
     local row = cursor[1] - 1
