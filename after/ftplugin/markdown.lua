@@ -48,7 +48,12 @@ local go_to_obsidian_link = function()
     end
 end
 
-vim.keymap.set('n', 'gd', go_to_obsidian_link, { noremap = true })
+vim.keymap.set(
+    'n',
+    'gd',
+    go_to_obsidian_link,
+    { noremap = true, buffer = true }
+)
 
 local insert_obsidian_link = function()
     local enter = function(prompt_bufnr)
@@ -72,4 +77,9 @@ local insert_obsidian_link = function()
     }):find()
 end
 
-vim.keymap.set('i', '<c-x><c-f>', insert_obsidian_link, { noremap = true })
+vim.keymap.set(
+    'i',
+    '<c-x><c-f>',
+    insert_obsidian_link,
+    { noremap = true, buffer = true }
+)
